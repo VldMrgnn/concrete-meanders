@@ -257,7 +257,7 @@ function workersFetch({
 const fetchTestData = thunks.create(
   "/pw/fetchTestData",
   { supervisor: takeLeading },
-  function* (ctx, next) {
+  function* (_ctx, next) {
     const { result } = yield* call(
       workersFetch({
         api: `/s1/${storeName}`,
@@ -268,7 +268,7 @@ const fetchTestData = thunks.create(
   },
 );
 
-const abortAll = thunks.create("/pw/abortAll", { supervisor: takeEvery }, function* (ctx, next) {
+const abortAll = thunks.create("/pw/abortAll", { supervisor: takeEvery }, function* (_ctx, next) {
   for (const signal of executionMap.keys()) {
     signal.dispatchEvent(new Event("abort"));
   }
