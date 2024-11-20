@@ -1,4 +1,4 @@
-let persistenceWorkerInstance:Worker|null = null;
+let persistenceWorkerInstance: Worker | null = null;
 const hydrationWorkerInstance = new Map<string, Worker>();
 
 export const startBackPersitenceWorker = () => {

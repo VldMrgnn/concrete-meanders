@@ -1,24 +1,20 @@
-import sum from 'hash-sum';
-import { createTransform } from 'starfx';
-import { WebsocketProvider } from 'y-websocket'; // Websocket provider
-import * as Y from 'yjs';
+import sum from "hash-sum";
+import { createTransform } from "starfx";
+import { WebsocketProvider } from "y-websocket"; // Websocket provider
+import * as Y from "yjs";
 
-import { AppState } from '../types';
+import { AppState } from "../types";
 
 const base =
   import.meta.env.NODE_ENV === "development"
     ? import.meta.env.VITE_SERVICE
     : import.meta.env.VITE_SERVICE_PROD;
-const wsBase = (base||'').replace("http", "ws");
+const wsBase = (base || "").replace("http", "ws");
 
 const yDoc = new Y.Doc();
 const yState = yDoc.getMap("state");
 
-const provider = new WebsocketProvider(
-  `${wsBase}/yadapter`, 
-  "starfx-room",        
-  yDoc                  
-);
+const provider = new WebsocketProvider(`${wsBase}/yadapter`, "starfx-room", yDoc);
 provider.connect();
 const watchedKeys: (keyof AppState)[] = ["test"];
 
@@ -33,7 +29,7 @@ transform.in = function (state: Partial<AppState>) {
       if (sum(existingValue) !== sum(state[watchKey])) {
         yState.set(watchKey, state[watchKey]);
       } else {
-        console.log('filtered-out');
+        console.log("filtered-out");
       }
     }
   }, origin);
@@ -55,7 +51,7 @@ yState.observe((event, transaction) => {
       void 0;
     } else {
       // console.log("Update originated externally");
-     	window.fx.dispatch({ type: "YJS_UPDATE", payload: changes });
+      window.fx.dispatch({ type: "YJS_UPDATE", payload: changes });
     }
   }
 });

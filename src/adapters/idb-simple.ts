@@ -1,7 +1,7 @@
-import { openDB } from 'idb';
-import { AnyState, call, Err, Ok, PersistAdapter } from 'starfx';
+import { openDB } from "idb";
+import { AnyState, call, Err, Ok, PersistAdapter } from "starfx";
 
-import { PERSIST_DATABASE_VERSION } from '../state/constants';
+import { PERSIST_DATABASE_VERSION } from "../state/constants";
 
 export const openDbfn = (pName: string) => {
   return openDB(pName, PERSIST_DATABASE_VERSION, {
@@ -49,7 +49,7 @@ export function createIDBSimpleAdapter<S extends AnyState>(dbName: string): Pers
               db.createObjectStore("raw");
             }
           },
-        })
+        }),
       );
       const storage = yield* call(idbStorage.get("raw", key));
       return Ok(storage || {});
@@ -62,7 +62,7 @@ export function createIDBSimpleAdapter<S extends AnyState>(dbName: string): Pers
               db.createObjectStore("raw");
             }
           },
-        })
+        }),
       );
       try {
         yield* call(idbStorage.put("raw", state, key));
@@ -79,7 +79,7 @@ export function createIDBSimpleAdapter<S extends AnyState>(dbName: string): Pers
               db.createObjectStore("raw");
             }
           },
-        })
+        }),
       );
       yield* call(idbStorage.delete("raw", key));
       return Ok(undefined);

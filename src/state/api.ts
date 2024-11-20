@@ -11,9 +11,10 @@ function* debugMdw(ctx: ThunkCtx | ApiCtx, next: Next) {
   yield* next();
 }
 
-const service =
-  import.meta.env.DEV ? import.meta.env.VITE_SERVICE : import.meta.env.VITE_SERVICE_PROD;
- // http://localhost:9999/rest/api
+const service = import.meta.env.DEV
+  ? import.meta.env.VITE_SERVICE
+  : import.meta.env.VITE_SERVICE_PROD;
+// http://localhost:9999/rest/api
 
 export const thunks = createThunks<ThunkCtx>();
 thunks.use(debugMdw);

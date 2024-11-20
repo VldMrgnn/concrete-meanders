@@ -1,15 +1,27 @@
-import { each, ensure, main, on, Operation, race, resource, sleep, type } from 'effection';
-import IdemWeakMapIterable from 'idem-weak-iterable';
-import { create } from 'jsondiffpatch';
+import { each, ensure, main, on, Operation, race, resource, sleep } from "effection";
+import IdemWeakMapIterable from "idem-weak-iterable";
+import { create } from "jsondiffpatch";
 import {
-    call, createThunks, Err, keepAlive, mdw, Ok, parallel, put, request, run, spawn, take,
-    takeEvery, takeLeading
-} from 'starfx';
+  call,
+  createThunks,
+  Err,
+  keepAlive,
+  mdw,
+  Ok,
+  parallel,
+  put,
+  request,
+  run,
+  spawn,
+  take,
+  takeEvery,
+  takeLeading,
+} from "starfx";
 
-import { openDbfn, setTenantKey } from '../adapters/idb-tenants';
-import { debounceEndpoints } from '../state/helpers';
-import { isErr } from '../utils/basic';
-import { withResolvers } from '../utils/with-resolvers';
+import { openDbfn, setTenantKey } from "../adapters/idb-tenants";
+import { debounceEndpoints } from "../state/helpers";
+import { isErr } from "../utils/basic";
+import { withResolvers } from "../utils/with-resolvers";
 
 import type { IDBPDatabase } from "idb";
 import type { Result, ThunkCtx } from "starfx";
@@ -29,7 +41,9 @@ const timerMs = import.meta.env.NODE_ENV === "test" ? 100 : 1000;
 const executionMap = IdemWeakMapIterable<AbortSignal, boolean>();
 
 const base =
-  import.meta.env.NODE_ENV === "development" ? import.meta.env.VITE_SERVICE : import.meta.env.VITE_SERVICE_PROD;
+  import.meta.env.NODE_ENV === "development"
+    ? import.meta.env.VITE_SERVICE
+    : import.meta.env.VITE_SERVICE_PROD;
 // const wsBase = base.replace("http", "ws");
 
 const thunks = createThunks<ThunkCtx>();

@@ -1,18 +1,32 @@
-import { each, Err, main, Ok, on, resource, sleep } from 'effection';
-import IdemWeakMapIterable from 'idem-weak-iterable';
+import { each, Err, main, Ok, on, resource, sleep } from "effection";
+import IdemWeakMapIterable from "idem-weak-iterable";
 import {
-    call, createThunks, ensure, keepAlive, parallel, put, race, request, Result, run, spawn, take,
-    takeEvery, takeLeading, type
-} from 'starfx';
+  call,
+  createThunks,
+  ensure,
+  keepAlive,
+  parallel,
+  put,
+  race,
+  request,
+  Result,
+  run,
+  spawn,
+  take,
+  takeEvery,
+  takeLeading,
+} from "starfx";
 
-import { openDBForPeek } from '../adapters/idb-tenants';
-import { isErr, isOk } from '../utils/basic';
+import { openDBForPeek } from "../adapters/idb-tenants";
+import { isErr, isOk } from "../utils/basic";
 
 import type { Operation } from "starfx";
 import type { AppState, ThunkCtx } from "../types";
 // Constants
 const base =
-  import.meta.env.NODE_ENV === "development" ? import.meta.env.VITE_SERVICE : import.meta.env.VITE_SERVICE_PROD;
+  import.meta.env.NODE_ENV === "development"
+    ? import.meta.env.VITE_SERVICE
+    : import.meta.env.VITE_SERVICE_PROD;
 
 // Execution tracking
 const executionMap = IdemWeakMapIterable<AbortSignal, boolean>();
