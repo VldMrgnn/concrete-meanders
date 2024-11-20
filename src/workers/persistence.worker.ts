@@ -25,11 +25,11 @@ const storeNameResolver = withResolvers<string>();
 let persistDB: IDBPDatabase<unknown> | undefined = undefined;
 const persistDBResolvers = withResolvers<IDBPDatabase<unknown>>();
 
-const timerMs = process.env.NODE_ENV === "test" ? 100 : 1000;
+const timerMs = import.meta.env.NODE_ENV === "test" ? 100 : 1000;
 const executionMap = IdemWeakMapIterable<AbortSignal, boolean>();
 
 const base =
-  process.env.NODE_ENV === "development" ? process.env.VITE_SERVICE : process.env.VITE_SERVICE_PROD;
+  import.meta.env.NODE_ENV === "development" ? import.meta.env.VITE_SERVICE : import.meta.env.VITE_SERVICE_PROD;
 // const wsBase = base.replace("http", "ws");
 
 const thunks = createThunks<ThunkCtx>();

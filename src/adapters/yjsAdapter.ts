@@ -6,9 +6,9 @@ import * as Y from 'yjs';
 import { AppState } from '../types';
 
 const base =
-  process.env.NODE_ENV === "development"
-    ? process.env.VITE_SERVICE
-    : process.env.VITE_SERVICE_PROD;
+  import.meta.env.NODE_ENV === "development"
+    ? import.meta.env.VITE_SERVICE
+    : import.meta.env.VITE_SERVICE_PROD;
 const wsBase = (base||'').replace("http", "ws");
 
 const yDoc = new Y.Doc();

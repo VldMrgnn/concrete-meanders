@@ -3,7 +3,7 @@ import { AnyState, call, Err, Ok, PersistAdapter } from 'starfx';
 
 import { getBackPersitenceWorker } from '../workers/worker-factory';
 
-const dev = process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test";
+const dev = import.meta.env.NODE_ENV === "development" || import.meta.env.NODE_ENV === "test";
 const PERSIST_DATABASE_VERSION = 17;
 
 global.TextDecoder = TextDecoder;
