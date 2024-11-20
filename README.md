@@ -1,17 +1,19 @@
-# Implementations of some features we may want to use in our projects
+# Implementations of Features for Our Projects
 
--- this project is not even started yet. I'll update this README when something is ready to be shared.
+We will use some features from this project to conduct tests and determine the best way to implement them in our projects. Note that this repository contains mixed files from different approaches and tests. We will cherry-pick the files we need for specific use cases and create new projects with them.
 
-## Some goals
+For example, the `idb-simple.ts` adapter cannot work simultaneously with the `idb-tenant.ts` adapter.
 
-- starfx store setup;
-- webworkers for persistence handling;
-- webworkers for data processing;
-- persistence in indexedDB;
-- back-up persisted data on the server;
-- efficient hydration of the store;
-- multi-tenant stores and persistence - switching between tenants;
-- large hystorical data-scenrios;
-      - data fetching: load totals only, load details on demand
-      - data fetching: sharded data fetching;
-      - persistence: recent shard persitnece, older data in indexedDB directly;
+## Goals
+
+- StarFX store setup
+- Web workers for persistence handling
+- Web workers for data processing
+- Persistence in IndexedDB
+- Back-up persisted data on the server
+- Efficient hydration of the store
+- Multi-tenant stores and persistence, including switching between tenants
+- Handling large historical data scenarios:
+  - Data fetching: load totals only, load details on demand
+  - Data fetching: sharded data fetching
+  - Persistence: recent shard persistence, older data directly in IndexedDB

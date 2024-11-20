@@ -23,12 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 .env
-
-# Feature-specific files
-src/adapters/idb-tenants.ts
-src/adapters/idb-simple.ts
-src/workers/persistence.worker.ts
-
-# Keep base template files
-!src/adapters/index.ts
-!src/adapters/types.ts
