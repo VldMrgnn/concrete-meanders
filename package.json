@@ -7,16 +7,29 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fmt": "./node_modules/.bin/biome format --write ./src"
   },
   "dependencies": {
+    "@types/hash-sum": "^1.0.2",
+    "debug": "^4.3.7",
+    "dotenv": "^16.4.5",
     "effection": "^3.0.3",
+    "hash-sum": "^2.0.0",
+    "idb": "^8.0.0",
+    "idem-weak-iterable": "^0.1.7",
+    "jsondiffpatch": "^0.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "starfx": "^0.13.3"
+    "remotedev": "^0.2.9",
+    "starfx": "^0.13.4",
+    "y-websocket": "^2.0.4",
+    "yjs": "^13.6.20"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@eslint/js": "^9.13.0",
+    "@types/debug": "^4.1.12",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
@@ -24,8 +37,10 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.11.0",
+    "stream-browserify": "^3.0.0",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.11.0",
+    "util": "^0.12.5",
     "vite": "^5.4.10"
   }
 }
