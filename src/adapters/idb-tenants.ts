@@ -1,7 +1,7 @@
-import { openDB } from "idb";
-import { AnyState, call, Err, Ok, PersistAdapter } from "starfx";
+import { openDB } from 'idb';
+import { AnyState, call, Err, Ok, PersistAdapter } from 'starfx';
 
-import { getBackPersitenceWorker } from "../workers/worker-factory";
+import { getBackPersitenceWorker } from '../workers/worker-factory';
 
 const dev = import.meta.env.NODE_ENV === "development" || import.meta.env.NODE_ENV === "test";
 const PERSIST_DATABASE_VERSION = 17;
@@ -45,7 +45,7 @@ export function withTenant(key: string) {
 }
 
 export const openDbfn = (pName: string) => {
-  const _ = getTenantKey();
+  getTenantKey(); //sic
   const dbName = withTenant(pName);
 
   // the pName when comming from worker contains the suffix also.
