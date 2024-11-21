@@ -1,27 +1,15 @@
-import { each, ensure, main, on, Operation, race, resource, sleep } from "effection";
-import IdemWeakMapIterable from "idem-weak-iterable";
-import { create } from "jsondiffpatch";
+import { each, ensure, main, on, Operation, race, resource, sleep } from 'effection';
+import IdemWeakMapIterable from 'idem-weak-iterable';
+import { create } from 'jsondiffpatch';
 import {
-  call,
-  createThunks,
-  Err,
-  keepAlive,
-  mdw,
-  Ok,
-  parallel,
-  put,
-  request,
-  run,
-  spawn,
-  take,
-  takeEvery,
-  takeLeading,
-} from "starfx";
+    call, createThunks, Err, keepAlive, mdw, Ok, parallel, put, request, run, spawn, take,
+    takeEvery, takeLeading
+} from 'starfx';
 
-import { openDbfn, setTenantKey } from "../adapters/idb-tenants";
-import { debounceEndpoints } from "../state/helpers";
-import { isErr } from "../utils/basic";
-import { withResolvers } from "../utils/with-resolvers";
+import { openDbfn, setTenantKey } from '../adapters/idb-tenants';
+import { debounceEndpoints } from '../state/helpers';
+import { isErr } from '../utils/basic';
+import { withResolvers } from '../utils/with-resolvers';
 
 import type { IDBPDatabase } from "idb";
 import type { Result, ThunkCtx } from "starfx";
@@ -232,8 +220,8 @@ function workersFetch({
           credentials: "include",
           headers: {
             "Content-Type": "application/json",
-            "x-forwarded-host": "jurnalgold.ro",
             "Accept-Encoding": "gzip",
+            //"x-forwarded-host": ....
           },
           body: method !== "GET" ? JSON.stringify(payload) : undefined,
         });

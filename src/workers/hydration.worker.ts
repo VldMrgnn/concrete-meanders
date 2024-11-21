@@ -1,24 +1,12 @@
-import { each, Err, main, Ok, on, resource, sleep } from "effection";
-import IdemWeakMapIterable from "idem-weak-iterable";
+import { each, Err, main, Ok, on, resource, sleep } from 'effection';
+import IdemWeakMapIterable from 'idem-weak-iterable';
 import {
-  call,
-  createThunks,
-  ensure,
-  keepAlive,
-  parallel,
-  put,
-  race,
-  request,
-  Result,
-  run,
-  spawn,
-  take,
-  takeEvery,
-  takeLeading,
-} from "starfx";
+    call, createThunks, ensure, keepAlive, parallel, put, race, request, Result, run, spawn, take,
+    takeEvery, takeLeading
+} from 'starfx';
 
-import { openDBForPeek } from "../adapters/idb-tenants";
-import { isErr, isOk } from "../utils/basic";
+import { openDBForPeek } from '../adapters/idb-tenants';
+import { isErr, isOk } from '../utils/basic';
 
 import type { Operation } from "starfx";
 import type { AppState, ThunkCtx } from "../types";
@@ -112,8 +100,8 @@ function workersFetch({
           credentials: "include",
           headers: {
             "Content-Type": "application/json",
-            "x-forwarded-host": "jurnalgold.ro",
             "Accept-Encoding": "gzip",
+            //"x-forwarded-host": ....
           },
           signal,
         });
